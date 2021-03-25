@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald:400,700');
+
+:root {
+  --level-one: translateZ(4rem);
+  --level-two: translateZ(6rem);
+  --level-three: translateZ(9rem);
+
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  font-family: 'Oswald', sans-serif;
+}
+.card {
+  width: 400px;
+}
+
+.content {
+  text-align: center;
+  position: relative;
+  padding: 15em 5em;
+  transition: transform 3s;
+  transform-style: preserve-3d;
+}
+
+.card:hover .content {
+  transform: rotateY(.5turn);
+}
+
+.front, .back {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 5em 3em;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  display: grid;
+  align-content: center;
+}
+
+.front {
+  background-color: #b7c9e5;
+  background-image: url(https://edsurge.imgix.net/uploads/post/image/12176/coding-1556754232.jpg?auto=compress%2Cformat&crop=true&h=405&w=1000);
+  background-size: cover;
+  background-blend-mode: overlay;
+  color: #333;
+}
+
+.front::before {
+  content: '';
+  position: absolute;
+  --spacer: 1em;
+  top: var(--spacer);
+  bottom: var(--spacer);
+  left: var(--spacer);
+  right: var(--spacer);
+  border: 3px solid currentColor;
+  transform: var(--level-one);
+}
+
+.title {
+  font-size: 3.5rem;
+  transform: var(--level-three);
+  order: 2;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  transform: var(--level-two);
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: .75rem;
+  font-weight: 700;
+  opacity: .7;
+}
+
+.body {
+  transform: var(--level-two);
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 1.6;
+}
+.back {
+  transform: rotateY(.5turn);
+  background-blend-mode: overlay;
+  color: yellow;
+  background-image: linear-gradient(to bottom, red, red), url('https://s3-us-west-2.amazonaws.com/robogarden-new/Articles/upload/blogs/fb-leverage-of-coding.jpg');
+}
